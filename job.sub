@@ -1,0 +1,12 @@
+#!/bin/bash
+#SBATCH --job-name=DEMDA
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --gres=gpu:1
+#SBATCH --time=06:30:00
+#SBATCH --error=test-%j.err
+#SBATCH --output=test-%j.out
+#SBATCH --partition=normal
+#ddt --no-mpi --connect 
+srun -n 1 ./src/dem
+#cuda-memcheck ./src/dem
